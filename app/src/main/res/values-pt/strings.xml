@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Adivinha</string>
+    <string name="palpite">Palpite</string>
+    <string name="action_settings">Definições</string>
+    <string name="numero_a_adivinhar">Tente adivinhar o numero que estou a pensar(entre 1 e 10)</string>
+    <string name="ErroPalpite">Introduza um valor entre 1 e 10</string>
+</resources>
