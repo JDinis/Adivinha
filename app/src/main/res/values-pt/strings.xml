@@ -5,4 +5,14 @@
     <string name="action_settings">Definições</string>
     <string name="numero_a_adivinhar">Tente adivinhar o numero que estou a pensar(entre 1 e 10)</string>
     <string name="ErroPalpite">Introduza um valor entre 1 e 10</string>
+    <string name="numero_maior">"O numero que estou a pensar é maior que "</string>
+    <string name="tente_novamente">. Tente novamente</string>
+    <string name="numero_menor">"O numero que estou a pensar é menor que "</string>
+    <string name="snackBar_advinha">Acção</string>
+    <string name="novo_jogo">Novo Jogo</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="jogar_novamente">Pretende jogar novamente?</string>
+    <string name="parabens">Parabens ganhou o jogo</string>
+    <string name="Certeza">Tem a certeza que quer começar um novo jogo?</string>
 </resources>

@@ -4,4 +4,14 @@
     <string name="palpite">Guess</string>
     <string name="ErroPalpite">Insert a value between 1 and 10</string>
     <string name="numero_a_adivinhar">Try to guess the number im thinking (between 1 and 10)</string>
+    <string name="numero_maior">"The number im thinking of is bigger than "</string>
+    <string name="tente_novamente">. Try Again</string>
+    <string name="numero_menor">"The number im thinking of is smaller than "</string>
+    <string name="snackBar_advinha">Action</string>
+    <string name="jogar_novamente">Would you like to play again?</string>
+    <string name="novo_jogo">New Game</string>
+    <string name="sim">Yes</string>
+    <string name="nao">No</string>
+    <string name="parabens">Congratulations you\'ve won</string>
+    <string name="Certeza">Are you sure you want to start a new game?</string>
 </resources>
