@@ -3,16 +3,21 @@ package pt.ipg.adivinha;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.ActionMenuItemView;
+import android.support.v7.view.menu.MenuItemImpl;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -35,8 +40,22 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        novoJogo();
-        adivinha();
+        if(savedInstanceState==null){
+            novoJogo();
+            adivinha();
+        }else {
+            numeroAdivinhar = savedInstanceState.getInt(Global.N_ADIVINHAR,0);
+            /*if(numeroAdivinhar==0){ // Nunca devia acontecer
+
+            }*/
+            tentativas = savedInstanceState.getInt(Global.TENTATIVAS,0);
+            minTentativas = savedInstanceState.getInt(Global.MIN_TENT,0);
+            maxTentativas = savedInstanceState.getInt(Global.MAX_TENT,0);
+            totalTentativas = savedInstanceState.getInt(Global.TOTAL_TENTATIVAS,0);
+            jogos = savedInstanceState.getInt(Global.JOGOS,0);
+            victorias = savedInstanceState.getInt(Global.VICTORIAS,0);
+            jogar = savedInstanceState.getBoolean(Global.A_JOGAR,true);
+        }
     }
 
     private void adivinha() {
@@ -82,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private int jogosFinalizados(){
+        return jogar ? jogos-1:jogos;
+    }
 
     private void acertou() {
         //todo: perguntar ao utilizador se quer voltar a jogar
@@ -145,6 +167,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void mostraEstatisticas(){
+        Intent intent = new Intent(this, EstatisticasActivity.class);
+        intent.putExtra(Global.JOGOS,jogosFinalizados());
+        intent.putExtra(Global.VICTORIAS,victorias);
+        intent.putExtra(Global.MIN_TENT, minTentativas);
+        intent.putExtra(Global.MAX_TENT, maxTentativas);
+        intent.putExtra(Global.MEDIA, (double)(victorias/(totalTentativas<=0?1:totalTentativas)));
+
+        startActivity(intent);
+    }
+
     private void iniciaNovoJogo() {
         numeroAdivinhar = random.nextInt(10)+1;
         tentativas=0;
@@ -164,13 +197,46 @@ public class MainActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch(item.getItemId()){
+            case R.id.action_settings:
+                return true;
+            case R.id.buttonNovoJogo:
+                ((ActionMenuItemView)item).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        novoJogo();
+                    }
+                });
+                return true;
+            case R.id.buttonEstatisticas:
+                ((MenuItem)item).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        mostraEstatisticas();
+                        return true;
+                    }
+                });
+                return true;
+        }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if(item.getItemId() == R.id.action_settings){
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(Global.N_ADIVINHAR,numeroAdivinhar);
+        outState.putInt(Global.TENTATIVAS,tentativas);
+        outState.putInt(Global.MIN_TENT,minTentativas);
+        outState.putInt(Global.MAX_TENT,maxTentativas);
+        outState.putInt(Global.TOTAL_TENTATIVAS,totalTentativas);
+        outState.putInt(Global.JOGOS,jogos);
+        outState.putInt(Global.VICTORIAS,victorias);
+        outState.putBoolean(Global.A_JOGAR,jogar);
+
+        super.onSaveInstanceState(outState);
     }
 }

@@ -15,4 +15,13 @@
     <string name="jogar_novamente">Pretende jogar novamente?</string>
     <string name="parabens">Parabens ganhou o jogo</string>
     <string name="Certeza">Tem a certeza que quer começar um novo jogo?</string>
+    <string name="jogos">Jogos</string>
+    <string name="n_jogos">Jogados</string>
+    <string name="victorias">Victorias</string>
+    <string name="victorias_percent">Victorias (%)</string>
+    <string name="tentativas">Tentativas</string>
+    <string name="minimo">Minimo</string>
+    <string name="maximo">Maximo</string>
+    <string name="media">Média</string>
+    <string name="title_activity_estatisticas">EstatisticasActivity</string>
 </resources>

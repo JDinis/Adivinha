@@ -2,8 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="pt.ipg.adivinha.MainActivity">
-    <item android:title="Novo Jogo" />
-    <item android:title="Ver Estatisticas" />
+    <item
+        android:id="@+id/buttonNovoJogo"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="Novo Jogo"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/buttonEstatisticas"
+        android:title="Ver Estatisticas"/>
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

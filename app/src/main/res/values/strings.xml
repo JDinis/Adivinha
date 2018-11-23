@@ -14,4 +14,13 @@
     <string name="nao">No</string>
     <string name="parabens">Congratulations you\'ve won</string>
     <string name="Certeza">Are you sure you want to start a new game?</string>
+    <string name="title_activity_estatisticas">StatisticsActivity</string>
+    <string name="jogos">Games</string>
+    <string name="n_jogos">Games Played</string>
+    <string name="victorias">Victories</string>
+    <string name="victorias_percent">Victories (%)</string>
+    <string name="tentativas">Attempts</string>
+    <string name="minimo">Minimum</string>
+    <string name="maximo">Maximum</string>
+    <string name="media">Mean</string>
 </resources>
